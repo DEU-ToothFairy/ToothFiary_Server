@@ -1,0 +1,48 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.7'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    /* JPA */
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    /* Lombok */
+    compileOnly 'org.projectlombok:lombok'
+    implementation 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    /* MySQL */
+    runtimeOnly 'mysql:mysql-connector-java'
+
+    /* Mustache */
+    implementation('org.springframework.boot:spring-boot-starter-mustache')
+
+    /* Swagger UI */
+    implementation 'io.springfox:springfox-swagger2:2.9.2'
+    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
