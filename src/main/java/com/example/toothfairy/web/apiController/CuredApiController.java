@@ -26,4 +26,6 @@ public class CuredApiController {
 
         return ResponseEntity.status(HttpStatus.OK).body(CuredInfo.toEntity(curedInfo));
     }
+
+
 }

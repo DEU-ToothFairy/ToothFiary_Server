@@ -38,6 +38,7 @@ public class PatientDto {
                 .birthDate(patient.getBirthDate())
                 .startDate(patient.getStartDate())
                 .endDate(patient.getEndDate())
+                .dailyWearTimeList(patient.getDailyWearTimeList())
                 .build();
     }
 }

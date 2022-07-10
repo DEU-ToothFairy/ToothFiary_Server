@@ -20,7 +20,7 @@ public class CuredInfo {
     @Id
     private int age;
 
-    @Column private Long totalTreatmentDate; // 총 치료 기간 (milliseconds)
+    @Column private int totalTreatmentDate;  // 총 치료 기간 (milliseconds)
     @Column private Long totalWearTime;      // 총 착용 시간 (milliseconds)
 
     /*
