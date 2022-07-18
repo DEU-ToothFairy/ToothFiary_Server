@@ -22,6 +22,8 @@ public class CuredInfo {
 
     @Column private int totalTreatmentDate;  // 총 치료 기간 (milliseconds)
     @Column private Long totalWearTime;      // 총 착용 시간 (milliseconds)
+    @Column private Long maxWearingTime;     // 최대 착용 시간 (milliseconds)
+    @Column private Long minWearingTime;     // 최소 착용 시간 (milliseconds)
 
     /*
      * 총 착용 시간 / 총 치료 기간
@@ -33,6 +35,8 @@ public class CuredInfo {
                 .age(dto.getAge())
                 .totalTreatmentDate(dto.getTotalTreatmentDate())
                 .totalWearTime(dto.getTotalWearTime())
+                .maxWearingTime(dto.getMaxWearingTime())
+                .minWearingTime(dto.getMinWearingTime())
                 .build();
     }
 }

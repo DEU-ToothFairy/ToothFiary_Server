@@ -2,6 +2,7 @@ package com.example.toothfairy.web.service;
 
 
 import com.example.toothfairy.web.dto.PatientDto;
+import com.example.toothfairy.web.dto.PatientLoginDto;
 import com.example.toothfairy.web.entity.Patient;
 import com.example.toothfairy.web.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,8 @@ public class PatientService {
     }
 
     // 특정 환자의 정보를 가져오는 메소드
-    public PatientDto getPatient(String patientNum){
-        Patient patient = patientRepository.findById(patientNum)
+    public PatientDto getPatient(String id){
+        Patient patient = patientRepository.findByUserId(id)
                                            .orElseThrow(()-> new IllegalArgumentException("환자 정보 조회 오류"));
 
         return Objects.isNull(patient) ? null : PatientDto.createDto(patient);
@@ -35,5 +36,17 @@ public class PatientService {
                                                      .collect(Collectors.toList());
 
         return patients;
+    }
+
+    public PatientDto login(PatientLoginDto loginDto){
+        Patient patient = patientRepository.findByUserId(loginDto.getId()).orElse(null);
+
+        
+        // 해당 아이디가 존재하지 않는 경우
+        if(Objects.isNull(patient)) return null;
+        // 비밀번호가 틀린 경우
+        if(!patient.getPassword().equals(loginDto.getPassword())) return null;
+
+        return PatientDto.createDto(patient);
     }
 }

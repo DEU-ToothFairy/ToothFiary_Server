@@ -4,6 +4,7 @@ import com.example.toothfairy.web.entity.CuredInfo;
 import lombok.*;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Column;
 import java.sql.Date;
 
 
@@ -18,12 +19,16 @@ public class CuredInfoDto {
 
     private int totalTreatmentDate; // 총 치료 기간 (milliseconds)
     private Long totalWearTime;      // 총 착용 시간 (milliseconds)
+    private Long maxWearingTime;     // 최대 착용 시간 (milliseconds)
+    private Long minWearingTime;     // 최소 착용 시간 (milliseconds)
 
     public static CuredInfoDto createDto(CuredInfo entity){
         return CuredInfoDto.builder()
                 .age(entity.getAge())
                 .totalTreatmentDate(entity.getTotalTreatmentDate())
                 .totalWearTime(entity.getTotalWearTime())
+                .maxWearingTime(entity.getMaxWearingTime())
+                .minWearingTime(entity.getMinWearingTime())
                 .build();
     }
 
