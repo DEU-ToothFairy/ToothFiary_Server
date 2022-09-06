@@ -34,7 +34,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
     public Docket api() {
         Parameter parameterBuilder = new ParameterBuilder()
                 .name(HttpHeaders.AUTHORIZATION)
-                .description("Access Tocken")
+                .description("Access Token")
                 .modelRef(new ModelRef("string"))
                 .parameterType("header")
                 .required(false)
