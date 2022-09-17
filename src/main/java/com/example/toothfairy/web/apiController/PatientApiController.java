@@ -47,21 +47,18 @@ public class PatientApiController {
         return ResponseEntity.status(HttpStatus.OK).body(patientDtos);
     }
 
-    @Transactional
     @PostMapping("/api/patients/add")
     @ApiOperation(value = "환자 등록", notes = "환자를 등록 합니다.")
     public ResponseEntity<PatientDto> createPatient(@RequestBody PatientDto patientDto){
         return null;
     }
     
-    @Transactional
     @PatchMapping("/api/patients/update")
     @ApiOperation(value = "환자 정보 수정", notes = "환자 정보를 수정 합니다.")
     public ResponseEntity<PatientDto> updatePatient(@RequestBody PatientDto patientDto){
         return null;
     }
 
-    @Transactional
     @DeleteMapping("/api/patients/{patientNum}")
     @ApiOperation(value = "환자 정보 삭제", notes = "환자 정보를 삭제 합니다.")
     public ResponseEntity<PatientDto> deletePatient(@PathVariable String patientNum){

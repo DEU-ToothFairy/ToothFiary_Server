@@ -5,7 +5,6 @@ import com.example.toothfairy.web.entity.DailyWearTime;
 import com.example.toothfairy.web.entity.Patient;
 import lombok.*;
 
-import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
@@ -17,8 +16,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PatientDto {
-    private String patientNum;
     private String id;
+    private String patientId;
     private String password;
     private String name;
     private Date birthDate;
@@ -31,8 +30,8 @@ public class PatientDto {
     // 엔티티를 Dto로 변환
     public static PatientDto createDto(Patient patient){
         return PatientDto.builder()
-                .patientNum(patient.getPatientNum())
                 .id(patient.getId())
+                .patientId(patient.getPatientId())
                 .password(patient.getPassword())
                 .name(patient.getName())
                 .birthDate(patient.getBirthDate())

@@ -5,9 +5,11 @@ import com.example.toothfairy.web.dto.CuredInfoDto;
 import com.example.toothfairy.web.entity.CuredInfo;
 import com.example.toothfairy.web.repository.CuredInfoRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
 
+@Transactional
 @Service
 public class CuredService {
     private CuredInfoRepository curedInfoRepository;

@@ -10,6 +10,6 @@ import java.util.Optional;
 
 public interface PatientRepository extends JpaRepository<Patient, String> {
 
-    @Query(value = "SELECT * FROM patient WHERE id = :id", nativeQuery = true)
+    @Query(value = "SELECT * FROM patient WHERE patient_id = :id", nativeQuery = true)
     Optional<Patient> findByUserId(@Param("id") String id);
 }

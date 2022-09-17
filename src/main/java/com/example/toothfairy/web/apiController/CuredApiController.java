@@ -29,7 +29,6 @@ public class CuredApiController {
         return ResponseEntity.status(HttpStatus.OK).body(CuredInfo.toEntity(curedInfo));
     }
 
-    @Transactional
     @PatchMapping("/api/cured/update")
     @ApiOperation(value = "완치 환자 정보 갱신", notes = "완치 환자의 정보를 갱신합니다.")
     public ResponseEntity<CuredInfoDto> updateCuredInfo(){

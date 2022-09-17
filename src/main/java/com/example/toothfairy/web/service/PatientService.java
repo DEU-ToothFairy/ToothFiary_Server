@@ -7,11 +7,13 @@ import com.example.toothfairy.web.entity.Patient;
 import com.example.toothfairy.web.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+@Transactional
 @Service
 public class PatientService {
 
