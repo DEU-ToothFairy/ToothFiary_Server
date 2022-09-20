@@ -27,7 +27,7 @@ public class DailyWearTimeController {
     }
 
 
-    @PostMapping("/api/dailyWearTimes/save")
+    @PostMapping("/api/dailyWearTimes")
     public ResponseEntity<List<DailyWearTimeDto>> saveDailyWearTime(@RequestBody List<DailyWearTimeDto> dtos){
         log.info(dtos.toString());
 
