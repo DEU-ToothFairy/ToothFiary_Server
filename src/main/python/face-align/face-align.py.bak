@@ -1,0 +1,41 @@
+
+
+import os
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
+
+import face_alignment
+import torch
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+
+from skimage import io
+
+# face_detector='sfd' 옵션이랑 device='cpu' 옵션 추가해야 함
+# device='gpu'를 써야 더 좋은 것 같은데 쓰면 오류남
+fa = face_alignment.FaceAlignment(face_alignment.LandmarksType._2D, flip_input=False, face_detector='sfd', device='cpu')
+
+t = torch.randn(2,2) #일반 버전
+#t = torch.randn(2,2).cuda() #쿠다 버전
+t.is_cuda  # returns True
+
+input = io.imread('./test-asset/test.jpg')
+#input = io.imread('C:/Users/joon/Desktop/face-alignment/test-asset/test.jpg')
+
+preds = fa.get_landmarks(input)
+
+fig = plt.figure(figsize=(10, 5))
+plt.imshow(input)
+
+for i, pred in enumerate(preds):
+    #plt.subplot(1, 2, i + 1)
+    plt.imshow(input)
+    plt.title(f'ToothFairy')
+    for detection in pred:
+        plt.scatter(detection[0], detection[1], 2)
+
+
+plt.savefig('./test-result/test_graph.png', edgecolor='blue', format='png', dpi=300)        
+#plt.savefig('C:/Users/joon/Desktop/face-alignment/test-result/test_graph.png', edgecolor='blue', format='png', dpi=300)
+#DPI 해상도
+#print(preds)
